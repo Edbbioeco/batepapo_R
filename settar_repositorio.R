@@ -17,3 +17,7 @@ gert::git_commit(message = "gitignore")
 # Criar repositório ----
 
 usethis::use_github()
+
+# Criar README ----
+
+usethis::use_readme_md()
