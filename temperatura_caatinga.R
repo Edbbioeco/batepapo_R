@@ -13,3 +13,10 @@ library(terra)
 library(tidyterra)
 
 library(ggview)
+
+# Shapefile da caatinga ----
+
+## Baixar ----
+
+caa <- geobr::read_biomes(year = 2025) |>
+  dplyr::filter(name_biome == "Caatinga")
