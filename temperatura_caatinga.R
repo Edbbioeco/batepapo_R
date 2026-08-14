@@ -64,14 +64,14 @@ evalscript <- "
 //VERSION=3
 function setup() {
   return {
-    input: [\"LST\", \"LST_uncertainty\", \"dataMask\"],
-    output: { bands: 3, sampleType: \"FLOAT32\" }
-  };
+    input: [\"LST\", \"dataMask\"],
+    output: { bands: 2, sampleType: \"FLOAT32\" }
+  }
 }
-
 function evaluatePixel(sample) {
-  return [sample.LST - 273.15, sample.LST_uncertainty, sample.dataMask];
-}"
+  return [sample.LST, sample.dataMask]
+}
+"
 
 evalscript
 
