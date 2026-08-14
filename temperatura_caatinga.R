@@ -109,3 +109,11 @@ rasters <- purrr::map(list.files(path = "./temp",
   setNames(datas)
 
 rasters
+
+## Transformar ºK em ºC ----
+
+rasters <- purrr::map(rasters,
+                      ~.x - 273.15,
+                      .progress = TRUE)
+
+rasters
