@@ -99,3 +99,13 @@ purrr::map(datas,
            ),
            .progress = TRUE)
 
+## Importar os rasters ----
+
+rasters <- purrr::map(list.files(path = "./temp",
+                                 pattern = "*.tif$",
+                                 full.names = TRUE),
+                      terra::rast,
+                      .progress = TRUE) |>
+  setNames(datas)
+
+rasters
