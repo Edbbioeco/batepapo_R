@@ -27,3 +27,10 @@ caa
 
 ggplot() +
   geom_sf(data = caa)
+
+# Baixar dados pelo CDSE ----
+
+## Iniciar cliente ----
+
+cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_id"),
+                                secret = Sys.getenv("CDSE_secret"))
