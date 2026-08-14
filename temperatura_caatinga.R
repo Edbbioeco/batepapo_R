@@ -52,7 +52,7 @@ datas <- catalogo |>
   dplyr::mutate(Ano = acquisitionDate |> lubridate::year(),
                 Mes = acquisitionDate |> lubridate::month()) |>
   dplyr::group_by(Ano, Mes) |>
-  dplyr::arrange(tileCloudCover) |>
+  dplyr::filter(tileCloudCover < 0.1) |>
   dplyr::slice(1) |>
   dplyr::pull(acquisitionDate)
 
