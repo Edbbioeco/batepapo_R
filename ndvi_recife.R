@@ -148,11 +148,13 @@ ggplot() +
 
 ### Extrair valores médios e desvio padrão ----
 
-df_ndvi <- purrr::imap_dfr(
+df_ndvi <- purrr::map2_dfr(
   rasters_trat,
+  datas,
   purrr::in_parallel(
 
-    ~tibble::tibble(Data = .y,
+    ~tibble::tibble(Data = .y[[1]] |>
+                      lubridate::as_date(),
                     `NDVI médio` = .x |>
                       terra::values() |>
                       na.omit() |>
