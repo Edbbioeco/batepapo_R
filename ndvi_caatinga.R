@@ -93,3 +93,17 @@ rasters <- purrr::map(datas,
   setNames(datas)
 
 rasters
+
+## Recortar rasters ----
+
+rasters_trat <- purrr::map(rasters,
+                           purrr::in_parallel(
+
+                             ~.x |>
+                               terra::crop(caa) |>
+                               terra::mask(caa)
+
+                           ),
+                           .progress = TRUE)
+
+rasters_trat
