@@ -71,3 +71,25 @@ evalscript <- rsi::spectral_indices() |>
   paste(collapse = "\n")
 
 evalscript
+
+## Baixar dados ----
+
+rasters <- purrr::map(datas,
+                      purrr::in_parallel(
+
+                        ~CDSE::GetImage(bbox = caa |> sf::st_bbox(),
+                                        time_range = .x,
+                                        script = evalscript,
+                                        collection = "sentinel-2-l2a",
+                                        format = "image/tiff",
+                                        mosaicking_order = "leastCC",
+                                        resolution = 1000,
+                                        mask = FALSE,
+                                        buffer = 100,
+                                        client = cliente)
+
+                      ),
+                      .progress = TRUE) |>
+  setNames(datas)
+
+rasters
