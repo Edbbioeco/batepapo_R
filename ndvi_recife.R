@@ -222,7 +222,9 @@ ndvi_animado_sd <- df_ndvi |>
                   ymax = `NDVI médio` + sd,
                   fill = "Desvio Padrão"),
               alpha = 0.3) +
-  geom_line(color = "blue") +
+  scale_fill_manual(values = c("limegreen")) +
+  geom_line(color = "green4",
+            linewidth = 1) +
   scale_x_date(date_breaks = "1 year",
                date_labels = "%Y") +
   theme_bw() +
