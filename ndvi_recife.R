@@ -192,5 +192,7 @@ df_ndvi |>
                date_labels = "%Y") +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
-        axis.title = element_text(color = "black", size = 20)) +
+        axis.title = element_text(color = "black", size = 20),
+        legend.text = element_text(color = "black", size = 20),
+        legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
