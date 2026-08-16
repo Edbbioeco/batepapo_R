@@ -175,3 +175,16 @@ df_ndvi |>
         axis.text.x = element_text(hjust = 1, angle = 90, size = 10),
         axis.title = element_text(color = "black", size = 20)) +
   ggview::canvas(height = 10, width = 14)
+
+df_ndvi |>
+  ggplot(aes(Data, `NDVI médio`, group = 1)) +
+  geom_ribbon(aes(ymin = `NDVI médio` - sd,
+                  ymax = `NDVI médio` + sd,
+                  fill = "Desvio Padrão"),
+              alpha = 0.3) +
+  geom_line(color = "blue") +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        axis.text.x = element_text(hjust = 1, angle = 90, size = 10),
+        axis.title = element_text(color = "black", size = 20)) +
+  ggview::canvas(height = 10, width = 14)
