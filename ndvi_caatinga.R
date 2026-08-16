@@ -54,16 +54,17 @@ catalogo
 ## Pesquisar datas ----
 
 datas <- catalogo |>
-  dplyr::mutate(Ano = acquisitionDate |> lubridate::year(),
-                Mes = acquisitionDate |> lubridate::month()) |>
-  dplyr::group_by(Ano, Mes) |>
-  dplyr::summarise(inicio = min(acquisitionDate),
-                   fim = max(acquisitionDate),
-                   .groups = "drop") |>
-  dplyr::mutate(intervalo = purrr::map2(inicio,
+  dplyr::mutate(mes_ref = acquisitionDate |>
+                  lubridate::floor_date("month")) |>
+  dplyr::distinct(mes_ref) |>
+  dplyr::arrange(mes_ref) |>
+  dplyr::mutate(inicio = mes_ref,
+                fim = mes_ref |>
+                  lubridate::ceiling_date("month") - lubridate::days(1),
+                intervalo = purrr::map2(inicio,
                                         fim,
-                                        ~c(.x, .y)
-                                        )) |>
+                                        ~c(as.character(.x),
+                                           as.character(.y)))) |>
   dplyr::pull(intervalo)
 
 datas
