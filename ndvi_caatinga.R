@@ -125,7 +125,8 @@ purrr::imap(
 
     ~ggplot() +
       geom_spatraster(data = .x) +
-      tidyterra::scale_fill_hypso_c(palette = "colombia_hypso") +
+      tidyterra::scale_fill_hypso_c(palette = "colombia_hypso",
+                                    direction = -1) +
       labs(title = .y)
 
     ),
