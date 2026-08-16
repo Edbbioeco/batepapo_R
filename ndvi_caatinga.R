@@ -95,7 +95,10 @@ rasters <- purrr::map(datas,
 
                       ),
                       .progress = TRUE) |>
-  setNames(datas)
+  setNames(purrr::map(datas,
+                      ~paste0(.x[1],
+                              " - ",
+                              .x[2])))
 
 rasters
 
