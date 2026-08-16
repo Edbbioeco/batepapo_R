@@ -109,8 +109,8 @@ rasters_trat <- purrr::map(rasters,
                            purrr::in_parallel(
 
                              ~.x |>
-                               terra::crop(caa) |>
-                               terra::mask(caa)
+                               terra::crop(rec) |>
+                               terra::mask(rec)
 
                            ),
                            .progress = TRUE)
