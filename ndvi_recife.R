@@ -14,6 +14,8 @@ library(tidyterra)
 
 library(ggview)
 
+library(gganimate)
+
 # Shapefile da caatinga ----
 
 ## Baixar ----
