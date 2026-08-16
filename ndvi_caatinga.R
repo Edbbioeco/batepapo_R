@@ -18,15 +18,15 @@ library(ggview)
 
 ## Baixar ----
 
-caa <- geobr::read_biomes(year = 2025) |>
-  dplyr::filter(name_biome == "Caatinga")
+rec <- rec <- geobr::read_municipality(year = 2025) |>
+  dplyr::filter(name_muni == "Recife")
 
 ## Visualizar ----
 
-caa
+rec
 
 ggplot() +
-  geom_sf(data = caa)
+  geom_sf(data = rec)
 
 # Baixar dados pelo CDSE ----
 
