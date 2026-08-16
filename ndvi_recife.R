@@ -196,3 +196,23 @@ df_ndvi |>
         legend.text = element_text(color = "black", size = 20),
         legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
+
+### Gráfiocos animados ----
+
+ndvi_animado <- df_ndvi |>
+  ggplot(aes(Data, `NDVI médio`)) +
+  geom_line() +
+  scale_x_date(date_breaks = "1 year",
+               date_labels = "%Y") +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        axis.title = element_text(color = "black", size = 20)) +
+  gganimate::transition_reveal(Data)
+
+gganimate::animate(ndvi_animado,
+                   height = 10,
+                   width = 12,
+                   units = "in",
+                   res = 150,
+                   nframes = 150,
+                   fps = 20)
