@@ -172,11 +172,12 @@ df_ndvi
 ### Gráfico ----
 
 df_ndvi |>
-  ggplot(aes(Data, `NDVI médio`, group = 1)) +
+  ggplot(aes(Data, `NDVI médio`)) +
   geom_line() +
+  scale_x_date(date_breaks = "1 year",
+               date_labels = "%Y") +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
-        axis.text.x = element_text(hjust = 1, angle = 90, size = 10),
         axis.title = element_text(color = "black", size = 20)) +
   ggview::canvas(height = 10, width = 14)
 
