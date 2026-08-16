@@ -134,5 +134,6 @@ purrr::imap(
 ggplot() +
   geom_spatraster(data = rasters_trat[[sample(1:length(rasters_trat),
                                               1)]]) +
-  tidyterra::scale_fill_hypso_c(palette = "colombia_hypso") +
+  tidyterra::scale_fill_hypso_c(palette = "colombia_hypso",
+                                direction = -1) +
   labs(title = rasters_trat |> names())
