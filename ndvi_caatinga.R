@@ -41,11 +41,11 @@ CDSE::GetCollections()
 
 ## Buscar catálogo ----
 
-catalogo <- CDSE::SearchCatalog(aoi = caa,
-                                from = "2020-01-01",
+catalogo <- CDSE::SearchCatalog(aoi = rec,
+                                from = "2000-01-01",
                                 to = "2026-07-01",
                                 collection = "sentinel-2-l2a",
-                                filter = "eo:cloud_cover < 0.01",
+                                filter = "eo:cloud_cover < 25",
                                 client = cliente,
                                 with_geometry = FALSE)
 
