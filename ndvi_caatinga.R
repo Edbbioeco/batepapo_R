@@ -83,7 +83,7 @@ evalscript
 rasters <- purrr::map(datas,
                       purrr::in_parallel(
 
-                        ~CDSE::GetImage(bbox = caa |> sf::st_bbox(),
+                        ~CDSE::GetImage(bbox = rec |> sf::st_bbox(),
                                         time_range = .x,
                                         script = evalscript,
                                         collection = "sentinel-2-l2a",
