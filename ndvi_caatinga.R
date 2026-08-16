@@ -21,3 +21,10 @@ library(ggview)
 caa <- geobr::read_biomes(year = 2025) |>
   dplyr::filter(name_biome == "Caatinga")
 
+## Visualizar ----
+
+caa
+
+ggplot() +
+  geom_sf(data = caa)
+
