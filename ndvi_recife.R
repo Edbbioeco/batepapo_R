@@ -234,8 +234,8 @@ ndvi_animado_sd <- df_ndvi |>
 
 gganimate::animate(ndvi_animado_sd,
                    height = 10,
-                   width = 12,
-                   units = "in",
-                   res = 150,
+                   width = 1280,
+                   height = 1066,
                    nframes = 150,
-                   fps = 20)
+                   fps = 20,
+                   renderer = gganimate::av_renderer("./serie_temporal_recife_ndvi_sd.mp4"))
