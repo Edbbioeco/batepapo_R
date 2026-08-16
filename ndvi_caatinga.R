@@ -35,3 +35,6 @@ ggplot() +
 cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_id"),
                                 secret = Sys.getenv("CDSE_secret"))
 
+## Coleções ----
+
+CDSE::GetCollections()
