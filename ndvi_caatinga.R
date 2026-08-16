@@ -138,3 +138,26 @@ ggplot() +
   tidyterra::scale_fill_hypso_c(palette = "colombia_hypso",
                                 direction = -1) +
   labs(title = rasters_trat |> names())
+
+## Série temporal ----
+
+### Extrair valores médios e desvio padrão ----
+
+df_ndvi <- purrr::imap_dfr(
+  rasters_trat,
+  purrr::in_parallel(
+
+    ~tibble::tibble(Data = .y,
+                    `NDVI médio` = .x |>
+                      terra::values() |>
+                      na.omit() |>
+                      mean(),
+                    sd = .x |>
+                      terra::values() |>
+                      na.omit() |>
+                      sd())
+
+    ),
+  .progress = TRUE)
+
+df_ndvi
