@@ -216,3 +216,27 @@ gganimate::animate(ndvi_animado,
                    res = 150,
                    nframes = 150,
                    fps = 20)
+
+ndvi_animado_sd <- df_ndvi |>
+  ggplot(aes(Data, `NDVI médio`)) +
+  geom_ribbon(aes(ymin = `NDVI médio` - sd,
+                  ymax = `NDVI médio` + sd,
+                  fill = "Desvio Padrão"),
+              alpha = 0.3) +
+  geom_line(color = "blue") +
+  scale_x_date(date_breaks = "1 year",
+               date_labels = "%Y") +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        axis.title = element_text(color = "black", size = 20),
+        legend.text = element_text(color = "black", size = 20),
+        legend.position = "bottom") +
+  gganimate::transition_reveal(Data)
+
+gganimate::animate(ndvi_animado_sd,
+                   height = 10,
+                   width = 12,
+                   units = "in",
+                   res = 150,
+                   nframes = 150,
+                   fps = 20)
