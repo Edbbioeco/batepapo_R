@@ -193,4 +193,4 @@ df_ndvi |>
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
         axis.title = element_text(color = "black", size = 20)) +
-  ggview::canvas(height = 10, width = 14)
+  ggview::canvas(height = 10, width = 12)
