@@ -233,7 +233,6 @@ ndvi_animado_sd <- df_ndvi |>
   gganimate::transition_reveal(Data)
 
 gganimate::animate(ndvi_animado_sd,
-                   height = 10,
                    width = 1280,
                    height = 1066,
                    nframes = 150,
