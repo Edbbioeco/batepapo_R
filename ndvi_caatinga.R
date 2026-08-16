@@ -107,3 +107,17 @@ rasters_trat <- purrr::map(rasters,
                            .progress = TRUE)
 
 rasters_trat
+
+## Visualizar rasters ----
+
+purrr::imap(
+  rasters_trat,
+  purrr::in_parallel(
+
+    ~ggplot() +
+      geom_spatraster(data = .x) +
+      tidyterra::scale_fill_hypso_c(palette = "colombia_hypso") +
+      labs(title = .y)
+
+    ),
+  .progress = TRUE)
