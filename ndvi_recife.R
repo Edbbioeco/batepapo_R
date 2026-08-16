@@ -172,6 +172,6 @@ df_ndvi |>
   geom_line() +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
-        axis.text.x = element_text(hjust = 1, angle = 90),
+        axis.text.x = element_text(hjust = 1, angle = 90, size = 10),
         axis.title = element_text(color = "black", size = 20)) +
   ggview::canvas(height = 10, width = 14)
