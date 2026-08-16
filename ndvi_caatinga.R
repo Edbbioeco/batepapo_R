@@ -89,7 +89,7 @@ rasters <- purrr::map(datas,
                                         collection = "sentinel-2-l2a",
                                         format = "image/tiff",
                                         mosaicking_order = "leastCC",
-                                        resolution = 1000,
+                                        resolution = 50,
                                         mask = FALSE,
                                         buffer = 100,
                                         client = cliente)
