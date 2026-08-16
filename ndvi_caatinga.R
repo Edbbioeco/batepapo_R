@@ -62,3 +62,12 @@ datas <- catalogo |>
   dplyr::pull(acquisitionDate)
 
 datas
+
+## Evalscript ----
+
+evalscript <- rsi::spectral_indices() |>
+  dplyr::filter(short_name == "NDVI") |>
+  CDSE::MakeEvalScript(constellation = "sentinel-2") |>
+  paste(collapse = "\n")
+
+evalscript
