@@ -182,14 +182,22 @@ df_ndvi
 ### Gráfico ----
 
 df_ndvi |>
-  ggplot(aes(Data, `NDVI médio`)) +
-  geom_line(linewidth = 1, color = "black") +
-  geom_line(aes(Data, `NDVI mínimo`), color = "brown4",
+  ggplot() +
+  geom_line(aes(Data, `NDVI médio`,
+                color = "NDVI médio"),
             linewidth = 1) +
-  geom_line(aes(Data, `NDVI máximo`), color = "darkgreen",
+  geom_line(aes(Data, `NDVI mínimo`,
+                color = "NDVI mínimo"),
             linewidth = 1) +
+  geom_line(aes(Data, `NDVI máximo`,
+                color = "NDVI Máximo"),
+            linewidth = 1) +
+  scale_color_manual(values = c("NDVI médio" = "black",
+                                "NDVI mínimo" = "brown4",
+                                "NDVI máximo" = "darkgreen")) +
   scale_x_date(date_breaks = "1 year",
                date_labels = "%Y") +
+  labs(y = "NDVI") +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
         axis.title = element_text(color = "black", size = 20)) +
