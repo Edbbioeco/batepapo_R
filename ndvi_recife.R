@@ -75,7 +75,7 @@ datas
 
 evalscript <- rsi::spectral_indices() |>
   dplyr::filter(short_name == "NDVI") |>
-  CDSE::MakeEvalScript(constellation = "sentinel-2") |>
+  CDSE::MakeEvalScript(constellation = "landsat") |>
   paste(collapse = "\n")
 
 evalscript
