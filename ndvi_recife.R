@@ -183,7 +183,11 @@ df_ndvi
 
 df_ndvi |>
   ggplot(aes(Data, `NDVI médio`)) +
-  geom_line() +
+  geom_line(linewidth = 1, color = "black") +
+  geom_line(aes(Data, `NDVI mínimo`), color = "brown4",
+            linewidth = 1) +
+  geom_line(aes(Data, `NDVI máximo`), color = "darkgreen",
+            linewidth = 1) +
   scale_x_date(date_breaks = "1 year",
                date_labels = "%Y") +
   theme_bw() +
