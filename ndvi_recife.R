@@ -190,17 +190,20 @@ df_ndvi |>
                 color = "NDVI mínimo"),
             linewidth = 1) +
   geom_line(aes(Data, `NDVI máximo`,
-                color = "NDVI Máximo"),
+                color = "NDVI máximo"),
             linewidth = 1) +
   scale_color_manual(values = c("NDVI médio" = "black",
                                 "NDVI mínimo" = "brown4",
                                 "NDVI máximo" = "darkgreen")) +
   scale_x_date(date_breaks = "1 year",
                date_labels = "%Y") +
-  labs(y = "NDVI") +
+  labs(y = "NDVI",
+       color = NULL) +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
-        axis.title = element_text(color = "black", size = 20)) +
+        axis.title = element_text(color = "black", size = 20),
+        legend.text = element_text(color = "black", size = 20),
+        legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
 
 df_ndvi |>
