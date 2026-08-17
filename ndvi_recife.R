@@ -128,7 +128,8 @@ purrr::imap(
     ~ggplot() +
       geom_spatraster(data = .x) +
       tidyterra::scale_fill_hypso_c(palette = "colombia_hypso",
-                                    direction = -1) +
+                                    direction = -1,
+                                    limits = c(-1, 1)) +
       labs(title = .y)
 
     ),
