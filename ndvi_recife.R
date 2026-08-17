@@ -270,7 +270,7 @@ ndvi_histo
 
 histo <- ndvi_histo |>
   ggplot(aes(NDVI)) +
-  geom_histogram(binwidth = 0.1, color = "black") +
+  geom_histogram(binwidth = 0.05, color = "black") +
   gganimate::transition_time(Ano) +
   labs(title = "Data: {frame_time}", y = "Contagem")  +
   theme_bw() +
