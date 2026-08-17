@@ -244,3 +244,24 @@ gganimate::animate(ndvi_animado_sd,
                    nframes = 150,
                    fps = 20,
                    renderer = gganimate::av_renderer("./serie_temporal_recife_ndvi_sd.mp4"))
+
+## Histograma ----
+
+### Dados de NDVI por ano ----
+
+ndvi_histo <- purrr::map2_dfr(
+  rasters_trat,
+  datas,
+  purrr::in_parallel(
+
+    ~tibble::tibble(Ano = .y[[1]] |>
+                      lubridate::as_date(),
+                    NDVI = .x |>
+                      terra::values() |>
+                      na.omit() |>
+                      as.numeric())
+
+    ),
+  .progress = TRUE)
+
+ndvi_histo
