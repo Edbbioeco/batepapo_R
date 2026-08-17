@@ -273,16 +273,30 @@ gganimate::animate(ndvi_animado,
                    renderer = gganimate::av_renderer("./serie_temporal_recife_ndvi.mp4"))
 
 ndvi_animado_sd <- df_ndvi |>
-  ggplot(aes(Data, `NDVI médio`)) +
-  geom_ribbon(aes(ymin = `NDVI médio` - sd,
+  ggplot() +
+  geom_line(aes(Data, `NDVI médio`,
+                color = "NDVI médio"),
+            linewidth = 1) +
+  geom_line(aes(Data, `NDVI mínimo`,
+                color = "NDVI mínimo"),
+            linewidth = 1) +
+  geom_line(aes(Data, `NDVI máximo`,
+                color = "NDVI máximo"),
+            linewidth = 1) +
+  scale_color_manual(values = c("NDVI médio" = "black",
+                                "NDVI mínimo" = "brown4",
+                                "NDVI máximo" = "darkgreen")) +
+  scale_x_date(date_breaks = "1 year",
+               date_labels = "%Y") +
+  geom_ribbon(aes(x = Data,
+                  ymin = `NDVI médio` - sd,
                   ymax = `NDVI médio` + sd,
                   fill = "Desvio Padrão"),
               alpha = 0.3) +
   scale_fill_manual(values = c("limegreen")) +
-  geom_line(color = "green4",
-            linewidth = 1) +
-  scale_x_date(date_breaks = "1 year",
-               date_labels = "%Y") +
+  labs(y = "NDVI",
+       color = NULL,
+       fill = NULL) +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
         axis.title = element_text(color = "black", size = 20),
