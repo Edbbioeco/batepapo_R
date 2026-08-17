@@ -140,7 +140,8 @@ ggplot() +
     sample(1:length(rasters_trat),
            1)]]) +
   tidyterra::scale_fill_hypso_c(palette = "colombia_hypso",
-                                direction = -1) +
+                                direction = -1,
+                                limits = c(-1, 1)) +
   labs(title = rasters_trat[
     sample(1:length(rasters_trat),
            1)] |> names())
