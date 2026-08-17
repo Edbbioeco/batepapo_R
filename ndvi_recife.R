@@ -265,3 +265,24 @@ ndvi_histo <- purrr::map2_dfr(
   .progress = TRUE)
 
 ndvi_histo
+
+### Visualizar histograma animado ----
+
+histo <- ndvi_histo |>
+  ggplot(aes(NDVI)) +
+  geom_histogram(binwidth = 0.1, color = "black") +
+  gganimate::transition_time(Ano) +
+  labs(title = "Data: {frame_time}", y = "Contagem")  +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        axis.title = element_text(color = "black", size = 20),
+        plot.title = element_text(color = "black", size = 30)) +
+  gganimate::ease_aes("linear")
+
+gganimate::animate(histo,
+                   width = 1280,
+                   height = 1066,
+                   nframes = 150,
+                   fps = 2,
+                   renderer = gganimate::av_renderer("./histograma_temporal_recife_ndvi.mp4"))
+
