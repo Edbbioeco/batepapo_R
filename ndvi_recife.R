@@ -157,6 +157,14 @@ df_ndvi <- purrr::map2_dfr(
 
     ~tibble::tibble(Data = .y[[1]] |>
                       lubridate::as_date(),
+                    `NDVI mínimo` = .x |>
+                      terra::values() |>
+                      na.omit() |>
+                      min(),
+                    `NDVI máximo` = .x |>
+                      terra::values() |>
+                      na.omit() |>
+                      max(),
                     `NDVI médio` = .x |>
                       terra::values() |>
                       na.omit() |>
